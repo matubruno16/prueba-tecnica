@@ -1,14 +1,19 @@
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: whitesmoke;
+  background-color: #c8e4ff;
 }
 
 h1 {
   text-align: center;
 }
 
-input[type="text"] {
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+input {
   padding: 10px;
   font-size: 16px;
   font-weight: 700;
@@ -33,11 +38,13 @@ form {
 }
 
 .container {
-  display: flex;
+  padding: 20px;
 }
 
 .section {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   margin: 10px;
 }
@@ -61,4 +68,11 @@ form {
   width: 80px;
   height: 80px;
   margin-top: 10px;
+}
+
+.forecast-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }

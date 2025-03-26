@@ -48,6 +48,45 @@ export class WeatherService {
       throw error;
     }
   }
+
+  async getForecast5ByCoordinates(lat, lon, days) {
+    try {
+      const response = await axios.get(
+        `${this.baseURL}/city/fivedaysforcast/${lat}/${lon}`,
+        {
+          headers: this.headers,
+        }
+      );
+      if (response.status !== 200 || response.statusText !== "OK") {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+
+      const { list } = response.data;
+      const forecast = [];
+      let daysToForecast = days;
+
+      if (days > 5) daysToForecast = 5;
+
+      for (let i = 0; i < daysToForecast; i++) {
+        const { main } = list[i];
+        const weather = new Weather(
+          response.data.city.name,
+          main.temp_min,
+          main.temp_max,
+          main.temp,
+          main.humidity,
+          main.pressure,
+          response.data.list[i].weather[0].icon
+        );
+        forecast.push(weather);
+      }
+      return forecast;
+    } catch (error) {
+      console.error("❌ Error obtaining forecast data:", error.message);
+      throw error;
+    }
+  }
+
   convertTemp(temp, unit) {
     if (unit === "celsius") return ((temp - 32) * (5 / 9)).toFixed(2);
     else if (unit === "fahrenheit")

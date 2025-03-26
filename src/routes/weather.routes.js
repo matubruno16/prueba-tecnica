@@ -16,4 +16,8 @@ router.get("/weather", (req, res) =>
   weatherController.getWeatherCity(req, res)
 );
 
+router.get("/weather/forecast", (req, res) =>
+  weatherController.getForecastByCoordinates(req, res)
+);
+
 export default router;

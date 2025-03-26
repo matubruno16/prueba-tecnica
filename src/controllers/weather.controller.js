@@ -22,6 +22,23 @@ class WeatherController {
       return res.status(400).json({ message: error.message });
     }
   }
+
+  async getForecastByCoordinates(req, res) {
+    const { lat, lon, days } = req.query;
+
+    if (!lat || !lon) {
+      return res.status(400).json({ message: "Coordinates not found" });
+    }
+
+    const daysToForecast = days ? +days : 5;
+
+    try {
+      const data = await this.weatherService.getForecast5ByCoordinates(lat, lon, daysToForecast);
+      return res.status(200).json(data);
+    } catch (error) {
+      return res.status(400).json({ message: error.message });
+    }
+  }
 }
 
 export { WeatherController };

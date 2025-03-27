@@ -8,7 +8,7 @@ const weatherController = new WeatherController();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-router.get("/home", (req, res) => {
+router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "views", "weather.html"));
 });
 

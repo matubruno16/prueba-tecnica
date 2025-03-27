@@ -7,6 +7,7 @@ const forecastCard = document.getElementById("forecast-card");
 function createWeatherCardHTML(data) {
   return `
     <div class="weather-card">
+      <h2>${data.name}</h2>
       <p>Min Temp: ${data.tempMin} °C</p>
       <p>Max Temp: ${data.tempMax} °C</p>
       <p>Current Temp: ${data.temp} °C</p>

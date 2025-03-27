@@ -69,7 +69,23 @@ cd prueba-tecnica
 npm install
 ```
 
-4. Run the application:
+
+4. Set up environment variables:
+
+Rename the .env.example file to .env:
+
+```
+mv .env.example .env
+```
+
+Open the .env file and replace your_api_key with your actual API key from OpenWeather API.
+```
+API_WEATHER_BASE_URL=https://open-weather13.p.rapidapi.com
+API_WEATHER_KEY=your_api_key_here
+API_WEATHER_HOST=open-weather13.p.rapidapi.com
+```
+
+5. Run the application:
 ```
 npm start
 ```

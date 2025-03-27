@@ -69,6 +69,7 @@ export class WeatherService {
 
       for (let i = 0; i < daysToForecast; i++) {
         const { main } = list[i];
+        const icon = `https://openweather.site/img/wn/${response.data.list[i].weather[0].icon}.png`;
         const weather = new Weather(
           response.data.city.name,
           main.temp_min,
@@ -76,7 +77,7 @@ export class WeatherService {
           main.temp,
           main.humidity,
           main.pressure,
-          response.data.list[i].weather[0].icon
+          icon
         );
         forecast.push(weather);
       }
